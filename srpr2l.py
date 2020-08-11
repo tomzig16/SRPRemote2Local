@@ -1,19 +1,15 @@
 import argparse
 import src.HelpMessages as HelpMes
-
-def ReplaceManifestJson(projectPath, srpPath):
-    print("Test func was hit!\n")
-    print(srpPath)
-
+import src.LocalDataLoader as ldloader
 
 if __name__ == "__main__":
     mainParser = argparse.ArgumentParser(description=HelpMes.appDescription)
     mainParser.add_argument("--setup", nargs=1, help=HelpMes.setSrpPath, default=None)
-    mainParser.add_argument("project_path", nargs="?", help="project path should be here")
-    mainParser.add_argument("srp_path", nargs="?", help="srp path should be here")
-    args = mainParser.parse_args(["arg1"])
+    mainParser.add_argument("project_path", nargs="?", help=HelpMes.projectPath)
+    mainParser.add_argument("srp_path", nargs="?", help=HelpMes.srpPath)
+    args = mainParser.parse_args(["arg1", "E:\\work\\srp"])
     print(args)
     if args.setup != None:
         print("Setup is not none")
     else:
-        ReplaceManifestJson(args.project_path, args.srp_path)
+        ldloader.ReplaceManifestJson(args.project_path, args.srp_path)
