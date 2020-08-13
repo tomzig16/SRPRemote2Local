@@ -1,5 +1,5 @@
 # SRPRemote2Local
-SRPRemote 2 Local is a repository with a script that essentially updates project manifest.json file contents (in effect replacing or adding) to include local SRP paths. This is usually needed in order to debug localally and change values inside the existing SRP scripts.
+SRPRemote 2 Local is a repository with a script that essentially updates Unity project packages manifest.json file contents (in effect replacing or adding) to include local SRP paths. This is usually needed in order to debug localally and change values inside the existing SRP scripts.
 
 # Instalation
 This application uses several pip requirements which are listed in `requirements.txt` file. Easiest way to install is to call pip install with -r argument as shown below.
