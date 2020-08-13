@@ -15,6 +15,7 @@ if __name__ == "__main__":
     else:
         if args.project_path == None: # required argument if --setup is not used
             mainParser.print_help()
+            print("\nEmpty usage is not allowed. Use either --setup or give at least 1 parameter with path to project which needs local srp inclusion.\n")
         else:
             printActions = args.print_actions
             AddLocalSRPToProject(args.project_path, args.srp_path)
