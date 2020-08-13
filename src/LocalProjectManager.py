@@ -1,11 +1,6 @@
 import os
 import json
-
-resourcesFolderName = "./res"
-jsonDataFileName = "LocalSRPParams.json"
-scriptPath = os.path.dirname(__file__)
-resourcesFolderPath = os.path.join(scriptPath, resourcesFolderName)
-resourcesFilePath = os.path.realpath(os.path.join(resourcesFolderPath, jsonDataFileName))
+from src.LocalSRPManager import GenerateSRPPackagesPaths, GetLocalSRPData
 
 printActions = False
 class ActionType:
@@ -19,29 +14,6 @@ class ActionType:
 def PrintAction(actionType, actionText):
     if printActions == True:
         print(f"[{actionType}] {actionText}")
-
-def GetLocalSRPData():
-    try:
-        localSRPPath = None
-        with open(resourcesFilePath) as jsonFile:
-            localSRPData = json.load(jsonFile)
-            localSRPPath = localSRPData["srp_path"]
-        return localSRPPath
-    except (FileNotFoundError, KeyError):
-        return None
-
-
-def GenerateSRPPackagesPaths(srpPath):
-    data = {
-        "srp_path": srpPath,
-        "srp_related":{}
-    }
-    for file in os.listdir(srpPath):
-        if "com.unity." not in file:
-            continue
-        data["srp_related"][file] = os.path.realpath(os.path.join(srpPath, file))
-    return data
-
 
 def GetProjectPackageManifestData(projectManifestPath):
     try:
@@ -81,8 +53,8 @@ def AddLocalSRPToProject(projectPath, srpPath):
         localSRPData = GenerateSRPPackagesPaths(localSrpPath)
     else:
         PrintAction(ActionType.INFO, "Trying to use existing local SRP info")
-        localSrpPath = GetLocalSRPData()
-        if localSrpPath == None:
+        localSRPData = GetLocalSRPData()
+        if localSRPData == None:
             print("Local SRP info is not saved and custom SRP path was not given. Please run command with --setup or give SRP path alongside project path.")
             return
     
@@ -100,6 +72,3 @@ def AddLocalSRPToProject(projectPath, srpPath):
     PrintAction(ActionType.INFO, "Finished.")
 
     print("Done")
-
-
-            
