@@ -4,7 +4,7 @@ from src.LocalProjectManager import printActions, AddLocalSRPToProject
 from src.LocalSRPManager import SetupLocalSRP 
 
 if __name__ == "__main__":
-    mainParser = argparse.ArgumentParser(description=HelpMes.appDescription)
+    mainParser = argparse.ArgumentParser(description=HelpMes.appDescription, add_help=False)
     mainParser.add_argument("--setup", nargs=1, help=HelpMes.setSrpPath, default=None)
     mainParser.add_argument("project_path", nargs="?", help=HelpMes.projectPath)
     mainParser.add_argument("srp_path", nargs="?", help=HelpMes.srpPath)

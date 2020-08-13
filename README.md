@@ -12,12 +12,13 @@ I suggest adding path to this application to path global variable so it can be a
 
 First you have to save path to SRP folder in SRPR2L by calling command below
 ```
-python srpr2l -srp [path/to/srp]
+srpr2l.py --setup Path/To/SRP
 ```
-Once it is added you can update any project by calling command and simply giving Unity project root folder
+Once you setup it that way you can use the tool by simply calling `srpr2l.py [path/to/project]` as shown below
 ```
-python srpr2l [path/to/unity/project]
+srpr2l.py path/to/unity/project
 ```
+Optionally, you can give another SRP folder (in case you have several copies with different versions) or additional parameter `-pa` (`--print-actions`) parameter which will print more information on what application is doing.
 
 # License
 
