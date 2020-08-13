@@ -6,6 +6,7 @@ This application uses several pip requirements which are listed in `requirements
 ```
 pip install -r ./requirements.txt
 ```
+I suggest adding path to this application to path global variable so it can be accessed from command line without navigating to this folder first.
 
 # Usage
 
@@ -17,3 +18,7 @@ Once it is added you can update any project by calling command and simply giving
 ```
 python srpr2l [path/to/unity/project]
 ```
+
+# License
+
+[MIT](LICENSE)
