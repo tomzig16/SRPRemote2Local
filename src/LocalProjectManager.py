@@ -29,6 +29,7 @@ def UpdateProjectManifestJson(projectJson, localSRPData):
             PrintAction(ActionType.CHANGED, f"\"{key}\":\t{projectJson['dependencies'][key]} -> {val}")
         else:
             PrintAction(ActionType.NEW, f"\"{key}\" added with value {val}")
+        val = "file:" + val
         projectJson["dependencies"][key] = val
 
 
